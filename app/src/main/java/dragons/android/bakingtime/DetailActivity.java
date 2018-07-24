@@ -30,6 +30,7 @@ public class DetailActivity extends AppCompatActivity {
 
         fragmentManager.beginTransaction()
                 .add(R.id.ingredients_and_steps_container, ingredientsWithSteps)
+                .addToBackStack(null)
                 .commit();
 
 

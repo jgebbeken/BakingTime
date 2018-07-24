@@ -14,4 +14,5 @@
     <dimen name="header_font_size">16sp</dimen>
     <dimen name="header_height">60dp</dimen>
     <dimen name="list_spacing">60dp</dimen>
+    <dimen name="detail_header_large">40dp</dimen>
 </resources>

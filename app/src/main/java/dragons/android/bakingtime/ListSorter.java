@@ -9,6 +9,7 @@ import dragons.android.bakingtime.model.Ingredient;
 import dragons.android.bakingtime.model.IngredientHeader;
 import dragons.android.bakingtime.model.Step;
 import dragons.android.bakingtime.model.StepsHeader;
+import dragons.android.bakingtime.model.VideoURL;
 
 public class ListSorter {
     static final String MPFOUR = "mp4";
@@ -41,9 +42,12 @@ public class ListSorter {
     public ArrayList<Object> stepDetailOrganizer(Step step) {
 
         String thumbnailURL;
-        String videoURL;
         String shortDescription;
         String description;
+
+        VideoURL videoURL = new VideoURL();
+        StepsHeader stepsHeader = new StepsHeader();
+
 
 
         ArrayList<Object> objectArrayList = new ArrayList<Object>();
@@ -53,11 +57,10 @@ public class ListSorter {
 
 
             if(step.getVideoURL().isEmpty()){
-                videoURL = "";
+                videoURL.setmVideoURL("");
             }
-            else
-            {
-                videoURL = step.getVideoURL();
+            else {
+                videoURL.setmVideoURL(step.getVideoURL());
             }
 
 
@@ -65,19 +68,17 @@ public class ListSorter {
             mMimetype = MimeTypeMap.getFileExtensionFromUrl(thumbnailURL);
 
            if(Objects.equals(mMimetype,MPFOUR)){
-               videoURL = thumbnailURL;
+               videoURL.setmVideoURL(thumbnailURL);
                thumbnailURL = "";
            }
 
 
 
-            shortDescription = step.getShortDescription();
-            description = step.getDescription();
+            stepsHeader.setmShortDescription(step.getShortDescription());
 
-            objectArrayList.add(shortDescription);
+            objectArrayList.add(stepsHeader);
             objectArrayList.add(videoURL);
-            objectArrayList.add(thumbnailURL);
-            objectArrayList.add(description);
+            objectArrayList.add(step.getDescription());
 
         return objectArrayList;
     }

@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Tomato sauce in pan taken from
+https://www.pexels.com/photo/black-frying-pan-with-spaghetti-sauce-near-brown-wooden-ladle-and-ripe-tomatoes-691114/
+Licensed to allow free commercial and personal use. No attribution required -->
 
     <TextView
-        android:id="@+id/test"
+        android:id="@+id/tvStepsHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:background="@color/headerColor"
+        android:gravity="center"
+        android:paddingBottom="@dimen/layout_margin_small"
+        android:paddingTop="@dimen/layout_margin_small"
+        android:textColor="@color/fontColorWhite"
+        android:textSize="@dimen/header_font_size"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ingredients" />
+
+
+    <ImageView
+        android:id="@+id/no_video_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recipe_dimen"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStepsHeader"
+         />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/video_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recipe_dimen"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_video_placeholder" />
+
+    <TextView
+        android:id="@+id/tvStepDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/layout_margin_small"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="@dimen/layout_margin_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/video_view"
+        tools:text="This is a simple introduction on how to make a pie." />
+
 
 </android.support.constraint.ConstraintLayout>
