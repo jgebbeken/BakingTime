@@ -13,11 +13,12 @@
         android:layout_marginEnd="@dimen/layout_margin_large"
         android:layout_marginStart="@dimen/margin_top_large"
         android:layout_marginTop="@dimen/margin_top_large"
+        android:fontFamily="@font/cabin_bold"
         android:gravity="center"
-        android:textColor="@color/fontColorWhite"
         android:paddingBottom="@dimen/layout_margin_small"
         android:paddingTop="@dimen/layout_margin_small"
 
+        android:textColor="@color/fontColorWhite"
         android:textSize="@dimen/header_font_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -11,15 +11,17 @@
         android:id="@+id/recipe_card"
         android:layout_margin="@dimen/layout_margin_large"
         card_view:cardCornerRadius="@dimen/cardview_corner_round">
-    <TextView
-        android:id="@+id/recipe_name"
-        android:layout_margin="@dimen/recipe_text_center"
-        android:paddingBottom="@dimen/card_padding_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        card_view:cardElevation="@dimen/card_elevation"
-        tools:text="Cookies and Creme Pie with Chocolate Chunk Pieces" />
+
+        <TextView
+            android:id="@+id/recipe_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/recipe_text_center"
+            android:fontFamily="@font/cabin_bold"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/card_padding_bottom"
+            card_view:cardElevation="@dimen/card_elevation"
+            tools:text="Cookies and Creme Pie with Chocolate Chunk Pieces" />
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <fragment
+        android:id="@+id/tablet_ingredients_steps"
+        android:name="dragons.android.bakingtime.IngredientsWithSteps"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"/>
+
+    <FrameLayout
+        android:id="@+id/tablet_step_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

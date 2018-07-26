@@ -39,28 +39,18 @@ public class ListSorter {
     // If it does then it will assign the url to the proper location.
 
 
-    public ArrayList<Object> stepDetailOrganizer(Step step) {
+    public Step fileTypeCheck (Step step) {
 
         String thumbnailURL;
-        String shortDescription;
-        String description;
-
-        VideoURL videoURL = new VideoURL();
-        StepsHeader stepsHeader = new StepsHeader();
-
-
-
-        ArrayList<Object> objectArrayList = new ArrayList<Object>();
-
         String mMimetype;
 
 
 
             if(step.getVideoURL().isEmpty()){
-                videoURL.setmVideoURL("");
+                step.setVideoURL("");
             }
             else {
-                videoURL.setmVideoURL(step.getVideoURL());
+                step.setVideoURL(step.getVideoURL());
             }
 
 
@@ -68,18 +58,10 @@ public class ListSorter {
             mMimetype = MimeTypeMap.getFileExtensionFromUrl(thumbnailURL);
 
            if(Objects.equals(mMimetype,MPFOUR)){
-               videoURL.setmVideoURL(thumbnailURL);
-               thumbnailURL = "";
+               step.setVideoURL(thumbnailURL);
+               step.setThumbnailURL("");
            }
+           return step;
 
-
-
-            stepsHeader.setmShortDescription(step.getShortDescription());
-
-            objectArrayList.add(stepsHeader);
-            objectArrayList.add(videoURL);
-            objectArrayList.add(step.getDescription());
-
-        return objectArrayList;
     }
 }

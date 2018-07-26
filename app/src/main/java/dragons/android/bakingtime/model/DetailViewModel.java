@@ -51,7 +51,7 @@ public class DetailViewModel extends ViewModel {
         return step;
     }
 
-    public void setStep(Step step) {
+    public void setStep (Step step) {
         this.step = step;
     }
 }

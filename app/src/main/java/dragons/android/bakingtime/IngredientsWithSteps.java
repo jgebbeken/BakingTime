@@ -1,6 +1,8 @@
 package dragons.android.bakingtime;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,16 +13,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.List;
+
 import dragons.android.bakingtime.Adapters.IngredientsWithStepsAdapter;
 import dragons.android.bakingtime.model.DetailViewModel;
+import dragons.android.bakingtime.model.Recipe;
 import dragons.android.bakingtime.model.Step;
 
-public class IngredientsWithSteps extends Fragment implements IngredientsWithStepsAdapter.OnStepClickHandler  {
+public class IngredientsWithSteps extends Fragment implements IngredientsWithStepsAdapter.OnStepClickHandler {
 
     private RecyclerView mRecyclerView;
     private IngredientsWithStepsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManger;
-    private  DetailViewModel model;
+    private SelectStep selectStep;
+    private DetailViewModel model;
+    Recipe recipe;
+
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        selectStep = (SelectStep) context;
+    }
+
+    public void setSelectStep(SelectStep selectStep) {
+        this.selectStep = selectStep;
+    }
 
     public IngredientsWithSteps() {
 
@@ -30,8 +49,9 @@ public class IngredientsWithSteps extends Fragment implements IngredientsWithSte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.ingredients_and_steps,container,false);
-
+        recipe = getActivity().getIntent().getParcelableExtra("sentRecipe");
         model = ViewModelProviders.of(getActivity()).get(DetailViewModel.class);
+        model.setRecipeMutableLiveData(recipe);
 
         mRecyclerView = rootView.findViewById(R.id.ingredients_and_steps_recyclerview);
         mLayoutManger = new LinearLayoutManager(getContext());
@@ -49,11 +69,18 @@ public class IngredientsWithSteps extends Fragment implements IngredientsWithSte
         Log.d("Fragment onClick"," was Clicked");
         Log.d("Step: ", step.getDescription());
         model.setStep(step);
+        selectStep.stepSelected();
 
-        StepsDetailView stepsDetailView = new StepsDetailView();
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.ingredients_and_steps_container,stepsDetailView);
-                transaction.addToBackStack(null);
-                transaction.commit();
     }
+
+
+    public interface SelectStep {
+        public void stepSelected();
+    }
+
+
+
+
+
+
 }
