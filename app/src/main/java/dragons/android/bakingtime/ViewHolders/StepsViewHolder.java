@@ -10,6 +10,7 @@ import butterknife.BindView;
 public class StepsViewHolder extends RecyclerView.ViewHolder {
 
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tvSteps) TextView tvSteps;
 
     public StepsViewHolder(View itemView) {

@@ -10,8 +10,11 @@ import dragons.android.bakingtime.R;
 
 public class IngredientsViewHolder extends RecyclerView.ViewHolder {
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tvIngredients) TextView tvIngredients;
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tvQuantity) TextView tvQuantity;
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tvMeasure) TextView tvMeasure;
 
     public IngredientsViewHolder(View itemView) {

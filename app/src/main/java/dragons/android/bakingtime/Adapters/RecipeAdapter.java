@@ -1,6 +1,5 @@
 package dragons.android.bakingtime.Adapters;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dragons.android.bakingtime.DetailActivity;
-import dragons.android.bakingtime.MainActivity;
 import dragons.android.bakingtime.R;
 import dragons.android.bakingtime.ViewHolders.RecipeViewHolder;
 import dragons.android.bakingtime.model.Recipe;

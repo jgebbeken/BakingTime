@@ -21,9 +21,14 @@ android {
 dependencies {
     def lifecycle_version = "1.1.1"
     def current_library_version = "27.1.1"
+    def android_support_test_version = "1.0.2"
+    def android_support_version = "27.1.1"
+    def espresso_version = "3.0.2"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$current_library_version"
+    implementation "com.android.support:animated-vector-drawable:$current_library_version"
+    implementation "com.android.support:exifinterface:$current_library_version"
     implementation "com.android.support:animated-vector-drawable:$current_library_version"
     implementation "com.android.support:design:$current_library_version"
     implementation "com.android.support:recyclerview-v7:$current_library_version"
@@ -32,9 +37,6 @@ dependencies {
     // LiveData and ViewModel
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-
-    // AirBnB library to build complex RecyclerView Layouts with less code
-    implementation 'com.airbnb.android:epoxy:2.14.0'
 
     // ButterKnife implementation
     implementation 'com.jakewharton:butterknife:8.8.1'
@@ -53,8 +55,12 @@ dependencies {
     // Picasso Library
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    annotationProcessor 'com.airbnb.android:epoxy-processor:2.14.0'
+    // Testing-only dependencies
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation "com.android.support:support-annotations:$android_support_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espresso_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "com.android.support.test:rules:$android_support_test_version"
+    androidTestImplementation "com.android.support.test:runner:$android_support_test_version"
 }

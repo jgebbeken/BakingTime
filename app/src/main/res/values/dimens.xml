@@ -4,7 +4,6 @@
     <dimen name="recipe_dimen">175dp</dimen>
     <dimen name="recipe_text_center">60dp</dimen>
     <dimen name="cardview_corner_round">4dp</dimen>
-    <dimen name="card_margin_top">4dp</dimen>
     <dimen name="card_elevation">10dp</dimen>
     <dimen name="card_padding_bottom">20dp</dimen>
     <dimen name="layout_margin_small">4dp</dimen>
@@ -14,5 +13,4 @@
     <dimen name="header_font_size">16sp</dimen>
     <dimen name="header_height">60dp</dimen>
     <dimen name="list_spacing">60dp</dimen>
-    <dimen name="detail_header_large">40dp</dimen>
 </resources>

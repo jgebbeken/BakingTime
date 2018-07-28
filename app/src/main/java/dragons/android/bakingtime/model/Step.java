@@ -38,10 +38,12 @@ public class Step implements Parcelable {
         this.thumbnailURL = thumbnailURL;
     }
 
+    @SuppressWarnings("unused")
     public Integer getId() {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public void setId(Integer id) {
         this.id = id;
     }
@@ -50,6 +52,7 @@ public class Step implements Parcelable {
         return shortDescription;
     }
 
+    @SuppressWarnings("unused")
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
     }
@@ -58,6 +61,7 @@ public class Step implements Parcelable {
         return description;
     }
 
+    @SuppressWarnings("unused")
     public void setDescription(String description) {
         this.description = description;
     }

@@ -9,10 +9,9 @@ import dragons.android.bakingtime.model.Ingredient;
 import dragons.android.bakingtime.model.IngredientHeader;
 import dragons.android.bakingtime.model.Step;
 import dragons.android.bakingtime.model.StepsHeader;
-import dragons.android.bakingtime.model.VideoURL;
 
 public class ListSorter {
-    static final String MPFOUR = "mp4";
+    private static final String MPFOUR = "mp4";
 
 
     public ListSorter(){
@@ -21,7 +20,7 @@ public class ListSorter {
 
 
     public ArrayList<Object> itemOrganizer(List<Ingredient> ingredients, List<Step> steps){
-        ArrayList<Object> objectsList = new ArrayList<Object>();
+        ArrayList<Object> objectsList = new ArrayList<>();
         StepsHeader stepsHeader = new StepsHeader();
         IngredientHeader ingredientHeader = new IngredientHeader();
 

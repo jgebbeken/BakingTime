@@ -9,6 +9,7 @@ import dragons.android.bakingtime.R;
 
 
 public class StepsHeaderViewHolder extends RecyclerView.ViewHolder{
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tvStepsHeader) TextView tvStepsHeader;
 
 

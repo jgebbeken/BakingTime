@@ -2,7 +2,7 @@ package dragons.android.bakingtime.model;
 
 public class StepsHeader {
 
-    private String mShortDescription;
+    private static final String HEADER = "Steps";
 
 
     public StepsHeader(){
@@ -10,15 +10,8 @@ public class StepsHeader {
     }
 
     public String getHeader(){
-        String header = "Steps";
-        return header;
+        return HEADER;
     }
 
-    public String getmShortDescription() {
-        return mShortDescription;
-    }
 
-    public void setmShortDescription(String mShortDescription) {
-        this.mShortDescription = mShortDescription;
-    }
 }

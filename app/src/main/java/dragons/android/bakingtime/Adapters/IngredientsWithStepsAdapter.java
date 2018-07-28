@@ -1,10 +1,8 @@
 package dragons.android.bakingtime.Adapters;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +21,7 @@ import dragons.android.bakingtime.model.StepsHeader;
 
 public class IngredientsWithStepsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Object> sortedList = new ArrayList<>();
-    Context context;
+    private final ArrayList<Object> sortedList;
     private OnStepClickHandler mStepHandler;
     private static final int INGREDIENTS_HEADER = 0;
     private static final int INGREDIENTS = 1;
@@ -33,16 +30,16 @@ public class IngredientsWithStepsAdapter extends RecyclerView.Adapter<RecyclerVi
 
 
     public interface OnStepClickHandler{
-        void onStepClick(int position, Step step);
+        void onStepClick(Step step);
     }
 
     public void setOnStepClickHandler(OnStepClickHandler onStepClickHandler){
         this.mStepHandler = onStepClickHandler;
     }
 
-    public IngredientsWithStepsAdapter(ArrayList<Object> sortedList, Context context){
+    public IngredientsWithStepsAdapter(ArrayList<Object> sortedList){
         this.sortedList = sortedList;
-        this.context = context;
+
     }
 
     @Override
@@ -142,9 +139,7 @@ public class IngredientsWithStepsAdapter extends RecyclerView.Adapter<RecyclerVi
             @Override
             public void onClick(View view) {
                 if(mStepHandler != null){
-                    if(position != RecyclerView.NO_POSITION){
-                        mStepHandler.onStepClick(position,step);
-                    }
+                    mStepHandler.onStepClick(step);
                 }
             }
         });

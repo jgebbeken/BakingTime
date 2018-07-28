@@ -29,6 +29,7 @@ Licensed to allow free commercial and personal use. No attribution required -->
 
     <ImageView
         android:id="@+id/no_video_placeholder"
+        android:contentDescription="@string/placeholder_description"
         android:layout_width="match_parent"
         android:layout_height="@dimen/recipe_dimen"
         android:visibility="visible"
@@ -50,8 +51,8 @@ Licensed to allow free commercial and personal use. No attribution required -->
         android:layout_marginTop="8dp"
         android:fontFamily="@font/cabin_bold"
         android:textSize="@dimen/header_font_size"
-        android:paddingLeft="@dimen/layout_margin_small"
         android:paddingStart="@dimen/layout_margin_small"
+        android:paddingEnd="@dimen/layout_margin_small"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/video_view"
         tools:text="This is a simple introduction on how to make a pie." />

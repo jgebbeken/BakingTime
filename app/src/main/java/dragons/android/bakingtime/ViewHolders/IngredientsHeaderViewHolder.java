@@ -10,6 +10,7 @@ import dragons.android.bakingtime.R;
 
 public class IngredientsHeaderViewHolder extends RecyclerView.ViewHolder {
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.tvIngredientsHeader) TextView tvIngredientsHeader;
 
 
