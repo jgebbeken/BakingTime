@@ -28,8 +28,8 @@ public class IngredientsWithSteps extends Fragment implements IngredientsWithSte
     private ChangeTitle changeTitle;
     private SelectStep selectStep;
     private DetailViewModel model;
-    RecyclerView mRecyclerView;
-    Recipe recipe;
+    private RecyclerView mRecyclerView;
+    private Recipe recipe;
     private static final String LAST_POSITION = "lastPosition";
     private static final String LAST_RECIPE = "lastRecipe";
 

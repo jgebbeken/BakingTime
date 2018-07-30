@@ -48,7 +48,7 @@ Licensed to allow free commercial and personal use. No attribution required -->
         android:id="@+id/tvStepDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_top_large"
         android:fontFamily="@font/cabin_bold"
         android:textSize="@dimen/header_font_size"
         android:paddingStart="@dimen/layout_margin_small"

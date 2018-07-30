@@ -99,10 +99,4 @@ public class RecipesFragment extends Fragment {
         bundle.putParcelable("savedData",savedRecipeList);
     }
 
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-
-
-    }
 }

@@ -10,11 +10,11 @@
     <fragment
         android:id="@+id/tablet_ingredients_steps"
         android:name="dragons.android.bakingtime.Fragments.IngredientsWithSteps"
-        android:layout_width="400dp"
+        android:layout_width="@dimen/tablet_ingredient_step_size"
         android:layout_height="match_parent"
         tools:ignore="InconsistentLayout" />
     <View
-        android:layout_width="1dp"
+        android:layout_width="@dimen/line_size"
         android:layout_height="match_parent"
         android:background="@color/cardview_dark_background"/>
 

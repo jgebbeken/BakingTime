@@ -13,4 +13,7 @@
     <dimen name="header_font_size">16sp</dimen>
     <dimen name="header_height">60dp</dimen>
     <dimen name="list_spacing">60dp</dimen>
+    <dimen name="margin_large_thirty_two">32dp</dimen>
+    <dimen name="tablet_ingredient_step_size">400dp</dimen>
+    <dimen name="line_size">1dp</dimen>
 </resources>
