@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.Objects;
 
@@ -21,12 +22,17 @@ import dragons.android.bakingtime.ViewModels.DetailViewModel;
 import dragons.android.bakingtime.model.Recipe;
 import dragons.android.bakingtime.model.Step;
 
+import static android.support.v7.widget.RecyclerView.*;
+
 public class IngredientsWithSteps extends Fragment implements IngredientsWithStepsAdapter.OnStepClickHandler {
 
     private ChangeTitle changeTitle;
     private SelectStep selectStep;
     private DetailViewModel model;
-
+    RecyclerView mRecyclerView;
+    Recipe recipe;
+    private static final String LAST_POSITION = "lastPosition";
+    private static final String LAST_RECIPE = "lastRecipe";
 
     @Override
     public void onAttach(Context context){
@@ -48,21 +54,30 @@ public class IngredientsWithSteps extends Fragment implements IngredientsWithSte
     {
         View rootView = inflater.inflate(R.layout.ingredients_and_steps,container,false);
 
-        Intent intent = Objects.requireNonNull(getActivity()).getIntent();
+        if(savedInstanceState == null) {
+            Intent intent = Objects.requireNonNull(getActivity()).getIntent();
 
-        Recipe recipe = intent.getParcelableExtra("sentRecipe");
-        model = ViewModelProviders.of(getActivity()).get(DetailViewModel.class);
+            recipe = intent.getParcelableExtra("sentRecipe");
+        } else{
+            recipe = savedInstanceState.getParcelable(LAST_RECIPE);
+        }
+        model = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(DetailViewModel.class);
         model.setRecipeMutableLiveData(recipe);
 
         changeTitle.changeTitle(recipe.getName());
 
-        RecyclerView mRecyclerView = rootView.findViewById(R.id.ingredients_and_steps_recyclerview);
-        RecyclerView.LayoutManager mLayoutManger = new LinearLayoutManager(getContext());
+        mRecyclerView = rootView.findViewById(R.id.ingredients_and_steps_recyclerview);
+        LayoutManager mLayoutManger = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManger);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()),LinearLayoutManager.VERTICAL));
         IngredientsWithStepsAdapter mAdapter = new IngredientsWithStepsAdapter(model.getRecyclerModel());
         mAdapter.setOnStepClickHandler(this);
         mRecyclerView.setAdapter(mAdapter);
+
+        if(savedInstanceState != null){
+            int position = savedInstanceState.getInt(LAST_POSITION);
+            mRecyclerView.scrollToPosition(position);
+        }
 
         return rootView;
     }
@@ -83,8 +98,15 @@ public class IngredientsWithSteps extends Fragment implements IngredientsWithSte
     }
 
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+        int position = ((LinearLayoutManager) mRecyclerView.getLayoutManager())
+                .findFirstVisibleItemPosition();
 
+        outState.putInt(LAST_POSITION,position);
+        outState.putParcelable(LAST_RECIPE, recipe);
 
-
+    }
 }

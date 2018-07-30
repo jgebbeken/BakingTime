@@ -15,11 +15,13 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import dragons.android.bakingtime.Adapters.RecipeAdapter;
 import dragons.android.bakingtime.R;
 import dragons.android.bakingtime.ViewModels.DataViewModel;
 import dragons.android.bakingtime.model.Recipe;
+import dragons.android.bakingtime.model.SavedRecipeList;
 
 public class RecipesFragment extends Fragment {
 
@@ -32,6 +34,10 @@ public class RecipesFragment extends Fragment {
 
     }
 
+
+
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.recipe_recycleview, container, false);
@@ -39,6 +45,18 @@ public class RecipesFragment extends Fragment {
 
         if(getActivity() != null) {
             model = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
+        }
+
+
+        if(savedInstanceState != null) {
+            SavedRecipeList savedRecipeList;
+            savedRecipeList = savedInstanceState.getParcelable("savedData");
+
+
+            List<Recipe> savedRecipes = new ArrayList<>(Objects.requireNonNull(savedRecipeList).getSavedRecipe());
+            model.setmSavedRecipeList(savedRecipes);
+
+
         }
 
         recipeList = new ArrayList<>();
@@ -68,5 +86,23 @@ public class RecipesFragment extends Fragment {
     }
 
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle bundle) {
+        super.onSaveInstanceState(bundle);
 
+        List<Recipe> recipes;
+        SavedRecipeList savedRecipeList = new SavedRecipeList();
+
+        //noinspection unchecked
+        recipes = model.getRecipeList().getValue();
+        savedRecipeList.setSavedRecipe(recipes);
+        bundle.putParcelable("savedData",savedRecipeList);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+
+
+    }
 }

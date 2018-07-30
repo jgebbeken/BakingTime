@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,8 @@ public class StepsDetailView extends Fragment {
 
     private PlayerView mPlayerView;
     private SimpleExoPlayer mSimpleExoPlayer;
+    private static final String LAST_POSITION = "lastPosition";
+    private static final String LAST_CURRENT_WINDOW = "currentWindow";
     private long playbackPosition = 0;
     private int currentWindow = 0;
     private boolean playWhenReady = true;
@@ -64,8 +67,11 @@ public class StepsDetailView extends Fragment {
         View rootView = inflater.inflate(R.layout.steps_detail_view, container, false);
         ButterKnife.bind(this,rootView);
 
+        if(savedInstanceState != null){
+            playbackPosition = savedInstanceState.getLong(LAST_POSITION);
+        }
+
         mPlayerView = rootView.findViewById(R.id.video_view);
-        //mNoVideoPlaceholder = rootView.findViewById(R.id.no_video_placeholder);
         DetailViewModel model = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(DetailViewModel.class);
         ListSorter listSorter = new ListSorter();
         Step step;
@@ -108,7 +114,7 @@ public class StepsDetailView extends Fragment {
 
        if(uri != null) {
            MediaSource mediaSource = buildMediaSource(uri);
-           mSimpleExoPlayer.prepare(mediaSource, true, false);
+           mSimpleExoPlayer.prepare(mediaSource, false, false);
        }
     }
 
@@ -176,4 +182,21 @@ public class StepsDetailView extends Fragment {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putLong(LAST_POSITION,mSimpleExoPlayer.getCurrentPosition());
+        outState.putInt(LAST_CURRENT_WINDOW, mSimpleExoPlayer.getCurrentWindowIndex());
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(savedInstanceState != null) {
+            playbackPosition = savedInstanceState.getLong(LAST_POSITION);
+            currentWindow = savedInstanceState.getInt(LAST_CURRENT_WINDOW);
+        }
+    }
 }

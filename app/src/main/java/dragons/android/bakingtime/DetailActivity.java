@@ -49,10 +49,12 @@ public class DetailActivity extends AppCompatActivity implements IngredientsWith
 
             });
 
-            fragmentManager.beginTransaction()
-                    .add(R.id.ingredients_and_steps_container, ingredientsWithSteps)
-                    .addToBackStack(null)
-                    .commit();
+            if(savedInstanceState == null) {
+                fragmentManager.beginTransaction()
+                        .add(R.id.ingredients_and_steps_container, ingredientsWithSteps)
+                        .addToBackStack(null)
+                        .commit();
+            }
         }
 
 

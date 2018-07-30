@@ -15,19 +15,33 @@ public class DataViewModel extends ViewModel {
 
     private final NetworkRepository networkRepository = new NetworkRepository();
 
+    private List<Recipe> mSavedRecipeList;
+
 
     public LiveData<List<Recipe>> getRecipeList(){
 
-        MutableLiveData<List<Recipe>> mutableRecipeList = networkRepository.getJson();
+        MutableLiveData<List<Recipe>> mutableRecipeList = new MutableLiveData<>();
 
-        Log.d("Start getRecipeList:","Before if statement");
+        if(mSavedRecipeList == null) {
+            mutableRecipeList = networkRepository.getJson();
+        } else{
+            Log.d("Data Loading: ", "From savedInstanceState");
+            mutableRecipeList.setValue(mSavedRecipeList);
+        }
+
+
+        Log.d("Start getRecipeList: ","Before if statement");
         if(mutableRecipeList == null) {
             Log.d("ViewModel: ", "Starting getRecipeList");
             mutableRecipeList = networkRepository.getJson();
         }
 
-        Log.d("returning", "Unknown returning of data");
+        Log.d("returning: ", "Recipe List");
         return mutableRecipeList;
     }
 
+
+    public void setmSavedRecipeList(List<Recipe> mSavedRecipeList) {
+        this.mSavedRecipeList = mSavedRecipeList;
+    }
 }
