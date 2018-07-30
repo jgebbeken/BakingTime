@@ -1,10 +1,6 @@
 package dragons.android.bakingtime;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -15,7 +11,6 @@ import android.view.ViewParent;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
@@ -26,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dragons.android.bakingtime.model.Recipe;
-import dragons.android.bakingtime.model.SavedRecipeList;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
