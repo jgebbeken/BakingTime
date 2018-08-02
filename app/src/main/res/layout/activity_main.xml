@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="dragons.android.bakingtime.MainActivity"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    tools:ignore="Overdraw">
+
 
     <FrameLayout
         android:id="@+id/recipe_container"

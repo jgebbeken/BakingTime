@@ -16,4 +16,15 @@
     <dimen name="margin_large_thirty_two">32dp</dimen>
     <dimen name="tablet_ingredient_step_size">400dp</dimen>
     <dimen name="line_size">1dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">0dp</dimen>
+    <dimen name="margin_large_40dp">40dp</dimen>
+    <dimen name="donut_width">40dp</dimen>
+    <dimen name="widget_header_40dp">40dp</dimen>
+    <dimen name="padding_large_16dp">16dp</dimen>
+    <dimen name="widget_font_size">16sp</dimen>
 </resources>

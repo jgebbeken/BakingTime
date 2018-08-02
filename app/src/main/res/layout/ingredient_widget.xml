@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    android:padding="@dimen/widget_margin">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_header_40dp"
+        android:background="@color/backgroundColorBlack">
+
+        <ImageView
+            android:layout_width="@dimen/donut_width"
+            android:layout_height="match_parent"
+            android:src="@drawable/donut"
+            android:contentDescription="@string/donut_icon" />
+
+        <TextView
+            android:textColor="@color/fontColorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_large_40dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/layout_margin_large"
+            android:textSize="@dimen/header_font_size"
+            android:text="@string/Widget_Baking_Time_Title"/>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ListView
+            android:id="@+id/widget_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>

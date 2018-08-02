@@ -20,6 +20,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private List<Recipe> recipes = new ArrayList<>();
     private Context context;
+    private boolean mWidget = false;
+    private OnWidgetSelectorHandler mWidgetHandler;
 
     public RecipeAdapter(List<Recipe> recipes, Context context) {
 
@@ -29,11 +31,24 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
+    public interface OnWidgetSelectorHandler{
+        void onWidgetSelectorClick(Recipe recipe);
+    }
+
+
     public void updateAdapter(List<Recipe> incoming){
         this.recipes.clear();
         this.recipes.addAll(incoming);
         notifyDataSetChanged();
 
+    }
+
+    public void fromWidget(boolean mWidget){
+        this.mWidget = mWidget;
+    }
+
+    public void setmWidgetHandler(OnWidgetSelectorHandler clickHandler){
+        mWidgetHandler = clickHandler;
     }
 
 
@@ -73,10 +88,17 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             @Override
             public void onClick(View view) {
                 Log.d("Clicking works Row : ", String.valueOf(position));
-                Recipe selectedRecipe = recipes.get(position);
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("sentRecipe", selectedRecipe);
-                context.startActivity(intent);
+
+                if(!mWidget) {
+                    Recipe selectedRecipe = recipes.get(position);
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra("sentRecipe", selectedRecipe);
+                    context.startActivity(intent);
+                } else{
+                    Log.d("From ", "Widget");
+                    mWidgetHandler.onWidgetSelectorClick(recipe);
+
+                }
             }
         });
 

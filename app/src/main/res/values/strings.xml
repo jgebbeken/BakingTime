@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Baking Time</string>
     <string name="placeholder_description">No video placeholder</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Widget Mode: Click Recipe to load ingredients to widget.</string>
+    <string name="Widget_Baking_Time_Title">Baking Time Ingredients</string>
+    <string name="donut_icon">donut icon</string>
 </resources>

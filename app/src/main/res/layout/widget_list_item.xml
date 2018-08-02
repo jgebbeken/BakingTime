@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundColor"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/widget_ingredientName"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin_large"
+        android:textSize="@dimen/widget_font_size"
+        android:textColor="@color/fontColorWhite"
+        android:textStyle="bold|italic"
+        tools:text="Graham Cracker Crumbs" />
+
+    <TextView
+
+        android:id="@+id/widget_ingredientQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin_large"
+        android:layout_marginTop="@dimen/layout_margin_large"
+        android:layout_marginBottom="@dimen/layout_margin_large"
+        android:contentDescription="@string/appwidget_text"
+        android:text="@string/appwidget_text"
+        android:textColor="@color/fontColorWhite"
+        android:textSize="@dimen/widget_font_size"
+        android:textStyle="bold|italic"
+        tools:text="2 " />
+
+    <TextView
+        android:id="@+id/widget_ingredientMeasure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin_large"
+        android:layout_marginBottom="@dimen/layout_margin_large"
+        android:contentDescription="@string/appwidget_text"
+        android:text="@string/appwidget_text"
+        android:textColor="@color/fontColorWhite"
+        android:textSize="@dimen/widget_font_size"
+        android:textStyle="bold|italic"
+        tools:text="Cups" />
+
+</LinearLayout>

@@ -4,7 +4,8 @@
     android:layout_height="@dimen/header_height"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/headerColor"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/tvStepsHeader"

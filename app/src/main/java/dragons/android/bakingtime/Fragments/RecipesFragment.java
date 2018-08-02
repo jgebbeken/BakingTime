@@ -29,7 +29,6 @@ public class RecipesFragment extends Fragment {
     private RecipeAdapter mAdapter;
     private DataViewModel model;
     private List<Recipe> recipeList = new ArrayList<>();
-
     public RecipesFragment() {
 
     }
@@ -41,7 +40,6 @@ public class RecipesFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.recipe_recycleview, container, false);
-
 
         if(getActivity() != null) {
             model = ViewModelProviders.of(getActivity()).get(DataViewModel.class);
@@ -98,5 +96,8 @@ public class RecipesFragment extends Fragment {
         savedRecipeList.setSavedRecipe(recipes);
         bundle.putParcelable("savedData",savedRecipeList);
     }
+
+
+
 
 }
