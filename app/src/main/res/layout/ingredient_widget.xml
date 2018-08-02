@@ -10,6 +10,8 @@
         android:layout_height="@dimen/widget_header_40dp"
         android:background="@color/backgroundColorBlack">
 
+
+        <!-- https://www.sketchappsources.com/free-source/2252-bakery-food-icon-set-sketch-freebie-resource.html-->
         <ImageView
             android:layout_width="@dimen/donut_width"
             android:layout_height="match_parent"
