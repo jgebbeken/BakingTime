@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,10 +44,13 @@ public class StepsDetailView extends Fragment {
     private SimpleExoPlayer mSimpleExoPlayer;
     private static final String LAST_POSITION = "lastPosition";
     private static final String LAST_CURRENT_WINDOW = "currentWindow";
+    private static final String SAVED_STEP = "savedStep";
+    private static final String WHEN_READY = "whenReady";
     private long playbackPosition = 0;
     private int currentWindow = 0;
     private boolean playWhenReady = true;
     private Uri uri;
+    private  Step step;
 
     private static final String NO_VIDEO_PLACEHOLDER = "https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg";
 
@@ -69,14 +73,20 @@ public class StepsDetailView extends Fragment {
 
         if(savedInstanceState != null){
             playbackPosition = savedInstanceState.getLong(LAST_POSITION);
+            currentWindow = savedInstanceState.getInt(LAST_CURRENT_WINDOW);
+            playWhenReady = savedInstanceState.getBoolean(WHEN_READY);
         }
 
         mPlayerView = rootView.findViewById(R.id.video_view);
         DetailViewModel model = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(DetailViewModel.class);
         ListSorter listSorter = new ListSorter();
-        Step step;
 
-        step = model.getStep();
+        if(savedInstanceState != null){
+            step = savedInstanceState.getParcelable(SAVED_STEP);
+            Log.d("SavedInstanceState", "Data being retrieved");
+        }else {
+            step = model.getStep();
+        }
 
         step = listSorter.fileTypeCheck(step);
 
@@ -169,6 +179,7 @@ public class StepsDetailView extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        // PlayWhenReady is called already in ReleasePlayer Method
         if (Util.SDK_INT <= 23) {
             releasePlayer();
         }
@@ -180,15 +191,21 @@ public class StepsDetailView extends Fragment {
         if (Util.SDK_INT > 23) {
             releasePlayer();
         }
+
+
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
+        Log.d("SavedInstanceState", "Saving data");
         outState.putLong(LAST_POSITION,mSimpleExoPlayer.getCurrentPosition());
         outState.putInt(LAST_CURRENT_WINDOW, mSimpleExoPlayer.getCurrentWindowIndex());
+        outState.putBoolean(WHEN_READY,playWhenReady);
+        outState.putParcelable(SAVED_STEP,step);
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -197,6 +214,11 @@ public class StepsDetailView extends Fragment {
         if(savedInstanceState != null) {
             playbackPosition = savedInstanceState.getLong(LAST_POSITION);
             currentWindow = savedInstanceState.getInt(LAST_CURRENT_WINDOW);
+            step = savedInstanceState.getParcelable(SAVED_STEP);
         }
     }
+
+
+
+
 }
