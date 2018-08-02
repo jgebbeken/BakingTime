@@ -1,7 +1,7 @@
 # Baking Time App 
 ### Udacity Android Developer Course - Grow with Google 2018
 
-
+![alt text](https://media.giphy.com/media/6AeYe6E02tKsIyJYUx/giphy.gif)
 
 Baking time is an app that demostrates the use of the following:
 
@@ -12,9 +12,8 @@ Baking time is an app that demostrates the use of the following:
   - Proper utilization of video assets
   - Third-party libraries
   - Utilization of RecyclerView
-  - homescreen widget*
+  - homescreen widget
   
-*homescreen widget currently not implemented yet.
 
 # Features
 
