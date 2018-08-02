@@ -4,6 +4,8 @@
 
 <img src="https://media.giphy.com/media/6AeYe6E02tKsIyJYUx/giphy.gif" width="20%">
 
+<img src="https://media.giphy.com/media/Ah2Y5i5l0Vd42gG4dH/giphy.gif" width=20%">
+
 Baking time is an app that demostrates the use of the following:
 
 
