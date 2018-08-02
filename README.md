@@ -2,7 +2,7 @@
 ### Udacity Android Developer Course - Grow with Google 2018
 
 
-<img src="https://media.giphy.com/media/6AeYe6E02tKsIyJYUx/giphy.gif" width="40%">
+<img src="https://media.giphy.com/media/6AeYe6E02tKsIyJYUx/giphy.gif" width="20%">
 
 Baking time is an app that demostrates the use of the following:
 
