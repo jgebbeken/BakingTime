@@ -25,6 +25,7 @@ public class DetailActivity extends AppCompatActivity implements IngredientsWith
     private final IngredientsWithSteps ingredientsWithSteps = new IngredientsWithSteps();
     private final FragmentManager fragmentManager =  getSupportFragmentManager();
     private static final String SAVED_STEP = "savedStep";
+    private static final String WHEN_READY = "whenReady";
 
 
     @Override
@@ -155,5 +156,9 @@ public class DetailActivity extends AppCompatActivity implements IngredientsWith
         Step step = savedInstanceState.getParcelable(SAVED_STEP);
         detailViewModel.setStep(step);
 
+        boolean playWhenReady = savedInstanceState.getBoolean(WHEN_READY);
+        Bundle bundle = new Bundle();
+
+        bundle.putBoolean(WHEN_READY,playWhenReady);
     }
 }

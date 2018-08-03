@@ -71,6 +71,11 @@ public class StepsDetailView extends Fragment {
         View rootView = inflater.inflate(R.layout.steps_detail_view, container, false);
         ButterKnife.bind(this,rootView);
 
+        Bundle bundle = new Bundle();
+        if(bundle.containsKey(WHEN_READY)){
+            playWhenReady = bundle.getBoolean(WHEN_READY);
+        }
+
         if(savedInstanceState != null){
             playbackPosition = savedInstanceState.getLong(LAST_POSITION);
             currentWindow = savedInstanceState.getInt(LAST_CURRENT_WINDOW);
